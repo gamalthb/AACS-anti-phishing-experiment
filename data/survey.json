@@ -1,0 +1,87 @@
+{
+  "items": [
+    {
+      "id": "Q1",
+      "text": "Peringatan yang saya lihat menjelaskan dengan jelas mengapa email tertentu mencurigakan atau aman.",
+      "type": "likert_7",
+      "anchor_low": "Sangat Tidak Setuju",
+      "anchor_high": "Sangat Setuju",
+      "construct": "manipulation_check",
+      "analysis_note": "Manipulation check only — between-groups t-test, not alpha composite.",
+      "source": "Researcher-developed, grounded in Desolda et al. (2023) WCS warning clarity construct"
+    },
+    {
+      "id": "Q2",
+      "text": "Saya memahami sinyal spesifik yang membedakan email mencurigakan dari email yang asli.",
+      "type": "likert_7",
+      "anchor_low": "Sangat Tidak Setuju",
+      "anchor_high": "Sangat Setuju",
+      "construct": "manipulation_check",
+      "analysis_note": "Manipulation check only — between-groups t-test, not alpha composite.",
+      "source": "Researcher-developed, grounded in Desolda et al. (2023) WCS cue comprehension construct"
+    },
+    {
+      "id": "Q3",
+      "text": "Peringatan membantu saya mengenali teknik manipulasi yang digunakan dalam email yang mencurigakan.",
+      "type": "likert_7",
+      "anchor_low": "Sangat Tidak Setuju",
+      "anchor_high": "Sangat Setuju",
+      "construct": "manipulation_check",
+      "analysis_note": "Manipulation check only — between-groups t-test, not alpha composite.",
+      "source": "Researcher-developed, grounded in Desolda et al. (2023) WCS tactic recognition construct"
+    },
+    {
+      "id": "Q4",
+      "text": "Saya yakin dapat mengevaluasi keaslian berbagai jenis email kerja.",
+      "chen_source_item": 6,
+      "original": "I am confident that I can perform effectively on many different tasks.",
+      "referent_shift": "'many different tasks' → 'berbagai jenis email kerja yang berbeda'",
+      "type": "likert_7",
+      "anchor_low": "Sangat Tidak Setuju",
+      "anchor_high": "Sangat Setuju",
+      "construct": "phishing_detection_self_efficacy",
+      "source": "Referent-shift adapted from Chen et al. (2001) NGSE item 6"
+    },
+    {
+      "id": "Q5",
+      "text": "Ketika menghadapi email yang tampak meyakinkan, saya yakin mampu mengidentifikasi apakah email tersebut mencurigakan atau tidak.",
+      "chen_source_item": 2,
+      "original": "When facing difficult tasks, I am certain that I will accomplish them.",
+      "referent_shift": "'difficult tasks' → 'email yang tampak meyakinkan'",
+      "type": "likert_7",
+      "anchor_low": "Sangat Tidak Setuju",
+      "anchor_high": "Sangat Setuju",
+      "construct": "phishing_detection_self_efficacy",
+      "source": "Referent-shift adapted from Chen et al. (2001) NGSE item 2"
+    },
+    {
+      "id": "Q6",
+      "text": "Bahkan tanpa bantuan sistem peringatan, saya dapat menilai keamanan email kerja dengan cukup baik.",
+      "chen_source_item": 8,
+      "original": "Even when things are tough, I can perform quite well.",
+      "referent_shift": "'when things are tough' → 'tanpa bantuan sistem peringatan'",
+      "type": "likert_7",
+      "anchor_low": "Sangat Tidak Setuju",
+      "anchor_high": "Sangat Setuju",
+      "construct": "phishing_detection_self_efficacy",
+      "source": "Referent-shift adapted from Chen et al. (2001) NGSE item 8"
+    },
+    {
+      "id": "Q7",
+      "text": "Saya akan merekomendasikan sistem peringatan email seperti yang ada dalam eksperimen ini untuk diterapkan di tempat kerja saya.",
+      "type": "likert_7",
+      "anchor_low": "Sangat Tidak Setuju",
+      "anchor_high": "Sangat Setuju",
+      "construct": "behavioral_intention_single_indicator",
+      "analysis_note": "Single indicator. Justify with Bergkvist & Rossiter (2007).",
+      "source": "Researcher-developed single indicator, Bergkvist & Rossiter (2007)"
+    },
+    {
+      "id": "Q8",
+      "text": "Apa yang paling membantu atau membingungkan dari sistem peringatan yang Anda lihat selama eksperimen ini?",
+      "type": "free_text",
+      "construct": "process_insight",
+      "source": "Qualitative triangulation"
+    }
+  ]
+}

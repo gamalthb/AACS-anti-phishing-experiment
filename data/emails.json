@@ -1,0 +1,538 @@
+{
+  "phase1": [
+    {
+      "id": "P1",
+      "phase": 1,
+      "type": "phishing",
+      "subtype": "legacy",
+      "difficulty": "medium",
+      "phish_scale_score": 5,
+      "cue_tags": ["TECH", "ERR", "URG", "THREAT", "PREM"],
+      "source": "W3LL M365 credential-theft campaign (Group-IB, 2023; FBI/Polri, 2026). Body passed through Google Translate EN→ID, no post-editing.",
+      "display": {
+        "from_name": "Microsoft 365",
+        "from_address": "no-reply@m365-account-security.com",
+        "subject": "Tindakan Diperlukan: Kata Sandi Anda Akan Kedaluwarsa dalam 4 Jam",
+        "body": "Kepada Pengguna Microsoft 365 yang Terhormat,\n\nSistem keamanan kami telah mendeteksi bahwa kata sandi Microsoft 365 Anda akan kedaluwarsa dalam 4 jam.\n\nUntuk menghindari kehilangan akses ke email, file, dan aplikasi Microsoft 365 Anda, Anda harus segera memverifikasi akun Anda.\n\nDetail Akun:\n- Akun: employee@yourcompany.com\n- Waktu Kedaluwarsa: Hari ini, 4 jam dari sekarang\n- Status: TINDAKAN SEGERA DIPERLUKAN\n\nJika Anda tidak bertindak dalam waktu 4 jam, akun Anda akan secara otomatis ditangguhkan dan Anda akan kehilangan akses ke semua layanan Microsoft 365 termasuk Outlook, Teams, dan SharePoint.\n\nJika Anda telah memperbarui kata sandi Anda, mohon abaikan pesan ini.\n\nTim Keamanan Microsoft 365\nMicrosoft Corporation\n© 2026 Microsoft Corporation. Semua hak dilindungi undang-undang.",
+        "link_text": "PERTAHANKAN KATA SANDI SAYA SAAT INI",
+        "link_url": "#"
+      },
+      "scaffold": {
+        "signals": [
+          {
+            "layer": "Indikator Teknis",
+            "tag": "TECH",
+            "text": "Domain m365-account-security.com bukan milik Microsoft — email resmi hanya dari accountprotection.microsoft.com. Jika diklik, kata sandi kerja Anda langsung dicuri."
+          },
+          {
+            "layer": "Manipulasi Psikologis",
+            "tag": "URG+THREAT",
+            "text": "Tenggat 4 jam sengaja dirancang agar Anda tidak sempat memeriksa pengirim. Tekanan waktu ini memaksa klik impulsif sebelum akal sehat bekerja."
+          },
+          {
+            "layer": "Konteks & Penyalahgunaan",
+            "tag": "PREM",
+            "text": "Notifikasi kata sandi terasa seperti prosedur IT biasa. Setelah diklik, penyerang masuk ke Outlook, Teams, dan SharePoint Anda untuk mencuri data perusahaan."
+          }
+        ],
+        "risk_level": "TINGGI",
+        "risk_emoji": "🔴"
+      },
+      "generic_warning": "Email ini telah ditandai sebagai berpotensi mencurigakan. Harap berhati-hati sebelum mengklik tautan apapun.",
+      "correct_answer": "phishing",
+      "cue_options": [
+        {"id": "A", "text": "Domain pengirim tidak cocok dengan domain resmi Microsoft", "correct": true},
+        {"id": "B", "text": "Bahasa Indonesia terasa tidak natural — seperti hasil terjemahan otomatis", "correct": true},
+        {"id": "C", "text": "Email menggunakan logo Microsoft yang salah", "correct": false},
+        {"id": "D", "text": "Email dikirim pada hari libur nasional", "correct": false}
+      ]
+    },
+    {
+      "id": "P2",
+      "phase": 1,
+      "type": "phishing",
+      "subtype": "legacy",
+      "difficulty": "medium",
+      "phish_scale_score": 5,
+      "cue_tags": ["TECH", "ERR", "URG", "THREAT", "PREM"],
+      "source": "DocuSign APAC impersonation campaign (Check Point Research, 2025; Cybrvault, 2026 incident #4). Body passed through Google Translate EN→ID, no post-editing.",
+      "display": {
+        "from_name": "DocuSign",
+        "from_address": "dse@docusign-secure.net",
+        "subject": "Tindakan Diperlukan: Dokumen Menunggu Tanda Tangan Anda",
+        "body": "Kepada Pengguna DocuSign yang Terhormat,\n\nSebuah dokumen telah dikirimkan kepada Anda dan memerlukan tanda tangan Anda segera.\n\nDetail Dokumen:\n- Dokumen: Persetujuan Pembayaran Vendor Q2-2026.pdf\n- Pengirim: Departemen Keuangan\n- Batas Waktu: 48 jam sejak diterima\n\nDokumen ini sensitif terhadap waktu dan berkaitan dengan transaksi keuangan yang aktif.\n\nKegagalan untuk menandatangani dalam batas waktu dapat menunda pemrosesan pembayaran dan memerlukan pengiriman ulang.\n\nJika Anda memiliki pertanyaan tentang isi dokumen, hubungi pengirim secara langsung.\n\nTerima kasih telah menggunakan DocuSign.\nDocuSign Inc., San Francisco, CA 94105",
+        "link_text": "TINJAU DAN TANDATANGANI DOKUMEN",
+        "link_url": "#"
+      },
+      "scaffold": {
+        "signals": [
+          {
+            "layer": "Indikator Teknis",
+            "tag": "TECH",
+            "text": "Domain docusign-secure.net bukan DocuSign resmi — notifikasi asli hanya dari dse@docusign.net. Jika diklik, akun DocuSign kerja Anda langsung diambil alih penyerang."
+          },
+          {
+            "layer": "Manipulasi Psikologis",
+            "tag": "URG+THREAT",
+            "text": "Tenggat 48 jam dan ancaman keterlambatan pembayaran mengalihkan perhatian dari memeriksa pengirim. Anda merasa bersalah jika tidak segera menandatangani."
+          },
+          {
+            "layer": "Konteks & Penyalahgunaan",
+            "tag": "PREM",
+            "text": "Tanda tangan dokumen vendor adalah tugas rutin staf keuangan — sehingga tidak terasa mencurigakan. Penyerang dapat mengubah rekening bank vendor dan membelokkan pembayaran perusahaan."
+          }
+        ],
+        "risk_level": "TINGGI",
+        "risk_emoji": "🔴"
+      },
+      "generic_warning": "Email ini telah ditandai sebagai berpotensi mencurigakan. Harap berhati-hati sebelum mengklik tautan apapun.",
+      "correct_answer": "phishing",
+      "cue_options": [
+        {"id": "A", "text": "Domain pengirim tidak cocok dengan domain resmi DocuSign", "correct": true},
+        {"id": "B", "text": "Kalimat seperti 'telah dikirimkan' dan 'terima kasih telah menggunakan' terasa seperti terjemahan otomatis", "correct": true},
+        {"id": "C", "text": "Email tidak mencantumkan ukuran file dokumen", "correct": false},
+        {"id": "D", "text": "Subjek email terlalu panjang", "correct": false}
+      ]
+    },
+    {
+      "id": "P3",
+      "phase": 1,
+      "type": "phishing",
+      "subtype": "ai_augmented",
+      "difficulty": "hard",
+      "phish_scale_score": 3,
+      "cue_tags": ["TECH", "URG", "THREAT", "AUTH", "PREM"],
+      "source": "Same W3LL M365 campaign as P1. Processed through two-stage LLM prompt (Cau et al., 2025 architecture). No ERR cues by design. Domain kept identical to P1 per Gamal correction — global attacker reuses infrastructure.",
+      "display": {
+        "from_name": "Microsoft 365",
+        "from_address": "no-reply@m365-account-security.com",
+        "subject": "Tindakan Diperlukan: Kata Sandi Akun Microsoft 365 Anda Kedaluwarsa dalam 4 Jam",
+        "body": "Yth. Bapak/Ibu,\n\nSistem keamanan Microsoft 365 mendeteksi bahwa kata sandi akun kerja Anda akan kedaluwarsa pada hari ini pukul 14.00 WIB — kurang dari 4 jam dari sekarang.\n\nDetail Akun:\n- Status: SEGERA DIPERLUKAN TINDAKAN\n- Batas Waktu: Hari ini pukul 14.00 WIB\n- Layanan Terdampak: Outlook, Teams, SharePoint\n\nApabila verifikasi tidak diselesaikan sebelum batas waktu tersebut, akun Microsoft 365 Anda akan dinonaktifkan secara otomatis. Hal ini akan menghentikan akses Anda ke Outlook, Teams, SharePoint, serta seluruh dokumen kerja, laporan, dan data perusahaan yang tersimpan di dalamnya — termasuk koordinasi dengan atasan dan rekan tim yang sedang berjalan.\n\nPemulihan akses yang dinonaktifkan memerlukan waktu 3–5 hari kerja melalui departemen IT, yang dapat mengganggu tanggung jawab dan tenggat waktu pekerjaan Anda secara signifikan.\n\nApabila Bapak/Ibu telah memperbarui kata sandi sebelumnya, abaikan email ini.\n\nSalam hormat,\nTim Keamanan Microsoft 365\nsupport@microsoft-keamanan365.id\n\n© 2026 Microsoft Corporation. All rights reserved.",
+        "link_text": "Verifikasi Kata Sandi Saya Sekarang",
+        "link_url": "#"
+      },
+      "scaffold": {
+        "signals": [
+          {
+            "layer": "Indikator Teknis",
+            "tag": "TECH",
+            "text": "Dua domain palsu sekaligus: m365-account-security.com dan microsoft-keamanan365.id — Microsoft tidak pernah pakai domain .id. Kredensial kerja Anda akan dicuri."
+          },
+          {
+            "layer": "Manipulasi Psikologis",
+            "tag": "URG+THREAT",
+            "text": "Waktu spesifik '14.00 WIB' dan ancaman 3–5 hari pemulihan IT membuat Anda menghitung kerugian pribadi — bukan memeriksa pengirim. Ini jebakan kalkulasi."
+          },
+          {
+            "layer": "Konteks & Penyalahgunaan",
+            "tag": "PREM",
+            "text": "Bahasa Indonesia sempurna tanpa kesalahan adalah tanda AI digunakan untuk menyerang. Penyerang masuk ke Outlook dan Teams Anda untuk phishing internal ke seluruh kantor."
+          }
+        ],
+        "risk_level": "TINGGI",
+        "risk_emoji": "🔴"
+      },
+      "generic_warning": "Email ini telah ditandai sebagai berpotensi mencurigakan. Harap berhati-hati sebelum mengklik tautan apapun.",
+      "correct_answer": "phishing",
+      "cue_options": [
+        {"id": "A", "text": "Domain pengirim tidak cocok dengan domain resmi Microsoft", "correct": true},
+        {"id": "B", "text": "Bahasa Indonesia yang terlalu sempurna justru mencurigakan untuk notifikasi otomatis", "correct": true},
+        {"id": "C", "text": "Email menggunakan format tanggal yang salah", "correct": false},
+        {"id": "D", "text": "Tidak ada logo Microsoft di dalam email", "correct": false}
+      ]
+    },
+    {
+      "id": "P4",
+      "phase": 1,
+      "type": "phishing",
+      "subtype": "ai_augmented",
+      "difficulty": "hard",
+      "phish_scale_score": 3,
+      "cue_tags": ["TECH", "URG", "THREAT", "AUTH", "PREM"],
+      "source": "Same DocuSign campaign as P2. Processed through two-stage LLM prompt (Cau et al., 2025 architecture). No ERR cues by design.",
+      "display": {
+        "from_name": "DocuSign",
+        "from_address": "dse@docusign-secure.net",
+        "subject": "Tindakan Diperlukan: Dokumen Persetujuan Menunggu Tanda Tangan Anda",
+        "body": "Yth. Bapak/Ibu,\n\nKami memberitahukan bahwa sebuah dokumen resmi telah dikirimkan kepada Anda melalui platform DocuSign dan memerlukan persetujuan tanda tangan dalam waktu 2 hari kerja sejak email ini diterima.\n\nDetail Dokumen:\n- Nama Dokumen: Persetujuan Pembayaran Vendor Q2-2026.pdf\n- Pengirim: Departemen Keuangan & Akuntansi\n- Batas Waktu: 2 hari kerja sejak email ini diterima\n\nDokumen ini berkaitan langsung dengan proses pembayaran kepada mitra bisnis yang sedang berjalan. Keterlambatan penandatanganan akan menghambat pencairan dana kepada vendor dan dapat berdampak pada reputasi perusahaan di hadapan mitra bisnis — sekaligus menempatkan Bapak/Ibu sebagai pihak yang bertanggung jawab atas keterlambatan tersebut dalam catatan departemen.\n\nApabila batas waktu terlewati, dokumen akan dikembalikan secara otomatis dan seluruh proses pengajuan harus dimulai kembali dari awal, yang memerlukan waktu tambahan 5–7 hari kerja.\n\nApabila Bapak/Ibu memiliki pertanyaan mengenai isi dokumen, silakan hubungi pengirim secara langsung.\n\nHormat kami,\nTim Notifikasi DocuSign\nDocuSign Inc., San Francisco, CA 94105",
+        "link_text": "Tinjau dan Tandatangani Dokumen",
+        "link_url": "#"
+      },
+      "scaffold": {
+        "signals": [
+          {
+            "layer": "Indikator Teknis",
+            "tag": "TECH",
+            "text": "Dua domain palsu sekaligus: docusign-secure.net dan docusign-portal.co — DocuSign resmi hanya dari docusign.net. Kredensial DocuSign perusahaan Anda akan dicuri."
+          },
+          {
+            "layer": "Manipulasi Psikologis",
+            "tag": "URG+THREAT",
+            "text": "Ancaman berlapis: keterlambatan vendor, reputasi perusahaan rusak, nama Anda tercatat sebagai penyebab — tiga tekanan sekaligus agar Anda klik tanpa memeriksa pengirim."
+          },
+          {
+            "layer": "Konteks & Penyalahgunaan",
+            "tag": "PREM",
+            "text": "Bahasa formal sempurna dan terminologi bisnis tepat adalah tanda AI menyusun email ini. Penyerang dapat mengubah rekening bank vendor dan membelokkan pembayaran perusahaan."
+          }
+        ],
+        "risk_level": "TINGGI",
+        "risk_emoji": "🔴"
+      },
+      "generic_warning": "Email ini telah ditandai sebagai berpotensi mencurigakan. Harap berhati-hati sebelum mengklik tautan apapun.",
+      "correct_answer": "phishing",
+      "cue_options": [
+        {"id": "A", "text": "Domain pengirim tidak cocok dengan domain resmi DocuSign", "correct": true},
+        {"id": "B", "text": "Konsekuensi finansial yang disebutkan terasa seperti tekanan bisnis yang disengaja", "correct": true},
+        {"id": "C", "text": "Email tidak mencantumkan nomor referensi dokumen", "correct": false},
+        {"id": "D", "text": "Tampilan email tidak sesuai dengan standar DocuSign", "correct": false}
+      ]
+    },
+    {
+      "id": "L1",
+      "phase": 1,
+      "type": "legitimate",
+      "subtype": "legitimate",
+      "difficulty": null,
+      "phish_scale_score": null,
+      "cue_tags": [],
+      "source": "Reconstructed from Microsoft official security notification template. Real domain accountprotection.microsoft.com verified at support.microsoft.com.",
+      "display": {
+        "from_name": "Microsoft Account",
+        "from_address": "account-security-noreply@accountprotection.microsoft.com",
+        "subject": "Aktivitas masuk baru-baru ini ke akun Microsoft Anda",
+        "body": "Yth. Pengguna Microsoft,\n\nKami menginformasikan bahwa ada masuk baru ke akun Microsoft Anda.\n\nDetail Masuk:\n- Waktu: Sabtu, 4 Juli 2026 pukul 08.15 WIB\n- Lokasi: Jakarta, Jawa Barat, Indonesia\n- Perangkat: Chrome di Windows 11\n\nJika Anda yang melakukan masuk ini, tidak diperlukan tindakan apa pun.\n\nJika Anda tidak melakukan masuk ini, segera amankan akun Anda di:\nhttps://account.microsoft.com/security\n\nAnda menerima email ini karena notifikasi aktivitas diaktifkan untuk akun Anda.\n\nSalam,\nTim Akun Microsoft",
+        "link_text": null,
+        "link_url": null
+      },
+      "scaffold": {
+        "signals": [
+          {
+            "layer": "Indikator Teknis",
+            "tag": "TECH",
+            "text": "Domain accountprotection.microsoft.com adalah domain resmi Microsoft untuk notifikasi keamanan — dapat diverifikasi di support.microsoft.com. Tidak ada domain palsu."
+          },
+          {
+            "layer": "Nada & Struktur",
+            "tag": "TONE",
+            "text": "Email hanya memberitahu aktivitas yang sudah terjadi — tidak ada tenggat waktu, ancaman, atau permintaan klik segera. Ini ciri komunikasi sistem yang sah."
+          },
+          {
+            "layer": "Konteks & Kesesuaian",
+            "tag": "PREM",
+            "text": "Masuk dari Jakarta/Chrome/Windows 11 konsisten dengan aktivitas kerja normal. Tautan mengarah ke account.microsoft.com — domain resmi Microsoft."
+          }
+        ],
+        "risk_level": "RENDAH",
+        "risk_emoji": "🟢"
+      },
+      "generic_warning": "Email ini tampak berasal dari pengirim yang sah.",
+      "correct_answer": "legitimate",
+      "cue_options": null
+    },
+    {
+      "id": "L2",
+      "phase": 1,
+      "type": "legitimate",
+      "subtype": "legitimate",
+      "difficulty": null,
+      "phish_scale_score": null,
+      "cue_tags": [],
+      "source": "Reconstructed from DocuSign official completion notification template. Real domain dse@docusign.net verified at support.docusign.com.",
+      "display": {
+        "from_name": "DocuSign",
+        "from_address": "dse@docusign.net",
+        "subject": "Selesai: Perjanjian Kerahasiaan Informasi telah ditandatangani",
+        "body": "Yth. Bapak/Ibu,\n\nSemua pihak telah menyelesaikan penandatanganan dokumen Anda.\n\nDokumen: Perjanjian Kerahasiaan Informasi (NDA) – Mitra Vendor Baru\nSelesai: Jumat, 3 Juli 2026 pukul 16.45 WIB\n\nSalinan dokumen yang telah ditandatangani tersedia di akun DocuSign Anda:\nhttps://www.docusign.com/documents\n\nSalam,\nDocuSign",
+        "link_text": null,
+        "link_url": null
+      },
+      "scaffold": {
+        "signals": [
+          {
+            "layer": "Indikator Teknis",
+            "tag": "TECH",
+            "text": "Domain dse@docusign.net adalah domain resmi DocuSign untuk seluruh notifikasi — dapat diverifikasi di support.docusign.com. Tautan mengarah ke docusign.com resmi."
+          },
+          {
+            "layer": "Nada & Struktur",
+            "tag": "TONE",
+            "text": "Email mengkonfirmasi dokumen yang sudah selesai ditandatangani — bukan meminta tindakan baru. Tidak ada tenggat waktu atau ancaman konsekuensi."
+          },
+          {
+            "layer": "Konteks & Kesesuaian",
+            "tag": "PREM",
+            "text": "Pemberitahuan penyelesaian NDA vendor adalah notifikasi DocuSign yang normal dan rutin. Isi dan format konsisten dengan komunikasi DocuSign yang sah."
+          }
+        ],
+        "risk_level": "RENDAH",
+        "risk_emoji": "🟢"
+      },
+      "generic_warning": "Email ini tampak berasal dari pengirim yang sah.",
+      "correct_answer": "legitimate",
+      "cue_options": null
+    },
+    {
+      "id": "L3",
+      "phase": 1,
+      "type": "legitimate",
+      "subtype": "legitimate",
+      "difficulty": null,
+      "phish_scale_score": null,
+      "cue_tags": [],
+      "source": "Reconstructed from Zoom official recording notification template. Real domain no-reply@zoom.us verified at support.zoom.us.",
+      "display": {
+        "from_name": "Zoom",
+        "from_address": "no-reply@zoom.us",
+        "subject": "Rekaman rapat tersedia: Weekly Team Sync – 3 Juli 2026",
+        "body": "Yth. Bapak/Ibu,\n\nRekaman rapat berikut kini tersedia:\n\nTopik: Weekly Team Sync\nTanggal: Jumat, 3 Juli 2026\nDurasi: 47 menit\n\nAkses rekaman:\nhttps://zoom.us/rec/share/xK3mP9\n\nRekaman ini tersedia selama 30 hari.\n\nSalam,\nTim Zoom",
+        "link_text": null,
+        "link_url": null
+      },
+      "scaffold": {
+        "signals": [
+          {
+            "layer": "Indikator Teknis",
+            "tag": "TECH",
+            "text": "Domain no-reply@zoom.us adalah domain resmi Zoom untuk semua notifikasi rekaman. Tautan mengarah ke zoom.us/rec — subdomain resmi Zoom."
+          },
+          {
+            "layer": "Nada & Struktur",
+            "tag": "TONE",
+            "text": "Email hanya memberitahu ketersediaan rekaman — tidak ada permintaan kredensial, tidak ada urgensi, tidak ada ancaman jika tidak diklik."
+          },
+          {
+            "layer": "Konteks & Kesesuaian",
+            "tag": "PREM",
+            "text": "Notifikasi rekaman rapat mingguan adalah komunikasi Zoom yang sangat umum. Durasi 47 menit dan topik spesifik menunjukkan notifikasi nyata bukan template generik."
+          }
+        ],
+        "risk_level": "RENDAH",
+        "risk_emoji": "🟢"
+      },
+      "generic_warning": "Email ini tampak berasal dari pengirim yang sah.",
+      "correct_answer": "legitimate",
+      "cue_options": null
+    },
+    {
+      "id": "L4",
+      "phase": 1,
+      "type": "legitimate",
+      "subtype": "legitimate",
+      "difficulty": null,
+      "phish_scale_score": null,
+      "cue_tags": [],
+      "source": "Reconstructed from Google Calendar official invitation template. Real domain calendar-notification@google.com.",
+      "display": {
+        "from_name": "Google Kalender",
+        "from_address": "calendar-notification@google.com",
+        "subject": "Undangan: Monthly Performance Review – Senin, 7 Juli 2026 pukul 10.00 WIB",
+        "body": "Budi Santoso mengundang Anda ke acara berikut:\n\nMonthly Performance Review\nSenin, 7 Juli 2026 | 10.00 – 11.00 WIB\n\nGoogle Meet:\nhttps://meet.google.com/abc-defg-hij\n\nAnda dapat menerima atau menolak undangan ini langsung di Google Kalender.\n\nAnda menerima email ini karena Budi Santoso menambahkan Anda sebagai tamu.",
+        "link_text": null,
+        "link_url": null
+      },
+      "scaffold": {
+        "signals": [
+          {
+            "layer": "Indikator Teknis",
+            "tag": "TECH",
+            "text": "Domain calendar-notification@google.com adalah domain resmi Google untuk notifikasi kalender. Tautan Meet mengarah ke meet.google.com — domain resmi Google."
+          },
+          {
+            "layer": "Nada & Struktur",
+            "tag": "TONE",
+            "text": "Undangan kalender standar dari rekan kerja — tidak ada manipulasi psikologis, tidak ada tekanan untuk bertindak di luar memilih terima atau tolak."
+          },
+          {
+            "layer": "Konteks & Kesesuaian",
+            "tag": "PREM",
+            "text": "Undangan Performance Review bulanan dari rekan kerja adalah notifikasi kalender yang normal dan rutin di lingkungan kerja profesional."
+          }
+        ],
+        "risk_level": "RENDAH",
+        "risk_emoji": "🟢"
+      },
+      "generic_warning": "Email ini tampak berasal dari pengirim yang sah.",
+      "correct_answer": "legitimate",
+      "cue_options": null
+    }
+  ],
+  "phase2": [
+    {
+      "id": "P5",
+      "phase": 2,
+      "type": "phishing",
+      "subtype": "authentic_indonesian",
+      "difficulty": "hard",
+      "phish_scale_score": 4,
+      "cue_tags": ["TECH", "THREAT", "AUTH", "URG", "PREM"],
+      "source": "Reconstructed from documented Indonesian organizational phishing targeting BPJS Ketenagakerjaan employer compliance. Real BPJS domain is bpjsketenagakerjaan.go.id. Non-.go.id domain definitionally fraudulent per Permenkominfo No. 5/2015. Legal references (PP No. 44/2015, UU No. 24/2011) are real laws used to add false legitimacy.",
+      "display": {
+        "from_name": "BPJS Ketenagakerjaan",
+        "from_address": "kepatuhan@bpjsketenagakerjaan-update.id",
+        "subject": "[PENTING] Kewajiban Pelaporan Iuran BPJS Ketenagakerjaan - Risiko Sanksi Administratif",
+        "body": "Yth. Bapak/Ibu HRD/Personalia,\n\nBerdasarkan Peraturan Pemerintah No. 44 Tahun 2015 dan Undang-Undang No. 24 Tahun 2011 tentang BPJS, perusahaan Anda diwajibkan untuk melaporkan dan membayar iuran kepesertaan seluruh tenaga kerja secara tepat waktu setiap bulannya.\n\nBerdasarkan data sistem kami, tercatat bahwa perusahaan Anda belum menyelesaikan kewajiban pelaporan iuran untuk periode Juni 2026. Keterlambatan pelaporan dapat mengakibatkan sanksi administratif berupa denda sebesar 2% per bulan dari total iuran yang belum dibayarkan, sesuai Pasal 17 UU BPJS.\n\nUntuk menghindari sanksi tersebut, mohon segera lakukan pembaruan data kepesertaan dan pembayaran iuran melalui portal resmi berikut:\n\nBatas waktu penyelesaian: 10 Juli 2026\n\nApabila Bapak/Ibu memerlukan bantuan, silakan hubungi petugas BPJS Ketenagakerjaan wilayah Anda.\n\nHormat kami,\nDivisi Kepatuhan dan Pengawasan\nBPJS Ketenagakerjaan",
+        "link_text": "Akses Portal Kepatuhan BPJS Ketenagakerjaan",
+        "link_url": "#"
+      },
+      "scaffold": null,
+      "generic_warning": null,
+      "correct_answer": "phishing",
+      "cue_options": null
+    },
+    {
+      "id": "P6",
+      "phase": 2,
+      "type": "phishing",
+      "subtype": "legacy",
+      "difficulty": "medium",
+      "phish_scale_score": 4,
+      "cue_tags": ["TECH", "ERR", "URG", "THREAT"],
+      "source": "Zoom credential phishing consistent with Proofpoint (2024) Zoom impersonation campaigns. Body passed through Google Translate EN→ID, no post-editing.",
+      "display": {
+        "from_name": "Keamanan Zoom",
+        "from_address": "security@zoom-account-verify.net",
+        "subject": "Akun Zoom Anda Telah Ditandai — Verifikasi Sekarang",
+        "body": "Kepada Pengguna Zoom yang Terhormat,\n\nKami mendeteksi aktivitas mencurigakan pada akun Zoom Anda dari perangkat yang tidak dikenal.\n\nDetail Akun:\n- Akun: employee@company.com\n- Perangkat: Browser / Windows Tidak Dikenal\n- Lokasi: Tidak Diketahui\n- Waktu: Hari Ini pukul 11:47\n\nUntuk melindungi akun Anda, akses telah dibatasi sementara. Harap verifikasi identitas Anda dalam waktu 24 jam atau akun Anda akan ditangguhkan secara permanen.\n\nJika Anda tidak memicu peringatan ini, harap verifikasi segera untuk mengamankan akun Anda.\n\nTim Keamanan & Kepercayaan Zoom\nZoom Video Communications, Inc.",
+        "link_text": "VERIFIKASI AKUN ZOOM SAYA",
+        "link_url": "#"
+      },
+      "scaffold": null,
+      "generic_warning": null,
+      "correct_answer": "phishing",
+      "cue_options": null
+    },
+    {
+      "id": "P7",
+      "phase": 2,
+      "type": "phishing",
+      "subtype": "ai_augmented",
+      "difficulty": "hard",
+      "phish_scale_score": 3,
+      "cue_tags": ["TECH", "URG", "THREAT", "AUTH", "PREM"],
+      "source": "Google Workspace storage phishing reconstructed from URLscan.io documented campaigns and Proofpoint 2025 threat landscape. Processed through two-stage LLM prompt. No ERR cues by design.",
+      "display": {
+        "from_name": "Google Workspace",
+        "from_address": "storage-alert@google-workspace-storage.com",
+        "subject": "Tindakan Diperlukan: Penyimpanan Google Drive Kerja Anda Hampir Penuh",
+        "body": "Yth. Bapak/Ibu,\n\nSistem Google Workspace mendeteksi bahwa kapasitas penyimpanan Google Drive akun kerja Anda telah mencapai 95% dari batas yang ditetapkan oleh administrator organisasi Anda.\n\nApabila tidak segera ditangani, seluruh file yang belum tersinkronisasi — termasuk laporan bulanan, dokumen rapat, file presentasi, dan rekaman Google Meet — akan berhenti tersinkronisasi secara otomatis dalam 48 jam ke depan.\n\nDampak yang akan terjadi apabila batas penyimpanan terlampaui:\n- Laporan dan dokumen yang belum diunggah tidak akan dapat diakses oleh atasan atau rekan tim Anda\n- File yang sedang dalam proses kolaborasi akan terhenti dan tidak dapat dilanjutkan\n- Departemen IT akan menerima notifikasi otomatis mengenai pelanggaran batas penyimpanan akun Anda\n- Pemulihan file yang gagal tersinkronisasi tidak dapat dijamin setelah batas waktu terlewati\n\nKondisi ini sangat kritis apabila terjadi menjelang periode pelaporan akhir bulan atau saat audit berlangsung.\n\nBatas waktu: 48 jam sejak email ini diterima.\n\nSalam hormat,\nTim Google Workspace",
+        "link_text": "Perbarui Penyimpanan Google Drive",
+        "link_url": "#"
+      },
+      "scaffold": null,
+      "generic_warning": null,
+      "correct_answer": "phishing",
+      "cue_options": null
+    },
+    {
+      "id": "P8",
+      "phase": 2,
+      "type": "phishing",
+      "subtype": "ai_augmented",
+      "difficulty": "very_hard",
+      "phish_scale_score": 2,
+      "cue_tags": ["TECH", "THREAT", "AUTH", "URG", "PREM"],
+      "source": "Internal HR impersonation reconstructed from FBI IC3 BEC patterns (2024). Processed through two-stage LLM prompt. Hardest stimulus — no external brand, maximum premise alignment, payroll + THR threat.",
+      "display": {
+        "from_name": "Departemen HR",
+        "from_address": "hr-kebijakan@perusahaan-update.id",
+        "subject": "Pembaruan Kebijakan Perusahaan – Konfirmasi Wajib Seluruh Karyawan",
+        "body": "Yth. Bapak/Ibu Karyawan,\n\nBersama ini kami sampaikan bahwa perusahaan telah melakukan pembaruan kebijakan tunjangan karyawan dan prosedur penggajian yang berlaku efektif 1 Agustus 2026. Pembaruan ini mencakup penyesuaian komponen gaji, tunjangan, serta mekanisme pembayaran THR periode berikutnya.\n\nSeluruh karyawan wajib menyelesaikan tiga langkah konfirmasi berikut melalui portal HR perusahaan sebelum 14 Juli 2026:\n\n1. Membaca dan menyetujui dokumen kebijakan tunjangan terbaru\n2. Memperbarui data rekening bank untuk keperluan transfer gaji dan THR periode Agustus 2026\n3. Mengkonfirmasi kehadiran pada sesi sosialisasi wajib — ketidakhadiran tanpa keterangan akan dicatat dalam rekam jejak kepegawaian Bapak/Ibu\n\nKaryawan yang tidak menyelesaikan konfirmasi sebelum batas waktu yang ditentukan tidak dapat diproses dalam pembayaran gaji periode Agustus 2026. Pemrosesan ulang memerlukan pengajuan manual melalui atasan langsung dan membutuhkan waktu 7–14 hari kerja tambahan.\n\nKetidakpatuhan terhadap pembaruan data kepegawaian ini juga akan berdampak pada kelancaran administrasi hak-hak karyawan Bapak/Ibu di periode berikutnya.\n\nHormat kami,\nDepartemen Human Resources",
+        "link_text": "Akses Portal HR Perusahaan",
+        "link_url": "#"
+      },
+      "scaffold": null,
+      "generic_warning": null,
+      "correct_answer": "phishing",
+      "cue_options": null
+    },
+    {
+      "id": "L5",
+      "phase": 2,
+      "type": "legitimate",
+      "subtype": "legitimate",
+      "difficulty": null,
+      "phish_scale_score": null,
+      "cue_tags": [],
+      "source": "Reconstructed from BPJS Ketenagakerjaan official employer notification. Real domain bpjsketenagakerjaan.go.id. Employer portal sipp.bpjsketenagakerjaan.go.id verified.",
+      "display": {
+        "from_name": "BPJS Ketenagakerjaan",
+        "from_address": "notifikasi@bpjsketenagakerjaan.go.id",
+        "subject": "Konfirmasi Pembayaran Iuran BPJS Ketenagakerjaan – Juni 2026",
+        "body": "Yth. Bapak/Ibu HRD/Personalia,\n\nKami mengonfirmasi bahwa pembayaran iuran BPJS Ketenagakerjaan perusahaan Anda untuk periode Juni 2026 telah kami terima dan diproses.\n\nNomor Referensi Pembayaran: BPJSTK/2026/06/000123\nJumlah Iuran: Sesuai daftar kepesertaan\nPeriode: Juni 2026\nStatus: LUNAS ✓\n\nSertifikat kepatuhan kepesertaan untuk periode ini dapat diunduh melalui portal employer kami:\nhttps://sipp.bpjsketenagakerjaan.go.id\n\nTerima kasih atas kepatuhan Anda dalam memenuhi kewajiban jaminan sosial ketenagakerjaan.\n\nHormat kami,\nBPJS Ketenagakerjaan",
+        "link_text": null,
+        "link_url": null
+      },
+      "scaffold": null,
+      "generic_warning": null,
+      "correct_answer": "legitimate",
+      "cue_options": null
+    },
+    {
+      "id": "L6",
+      "phase": 2,
+      "type": "legitimate",
+      "subtype": "legitimate",
+      "difficulty": null,
+      "phish_scale_score": null,
+      "cue_tags": [],
+      "source": "Reconstructed from Zoom official meeting invitation template. Real domain no-reply@zoom.us.",
+      "display": {
+        "from_name": "Zoom",
+        "from_address": "no-reply@zoom.us",
+        "subject": "Undangan Rapat: Project Kickoff Meeting – Kamis, 10 Juli 2026",
+        "body": "Budi Santoso mengundang Anda ke rapat Zoom.\n\nTopik: Project Kickoff Meeting\nWaktu: Kamis, 10 Juli 2026 pukul 13.00 – 14.00 WIB\n\nGabung rapat Zoom:\nhttps://zoom.us/j/12345678901\n\nID Rapat: 123 456 7890\nSandi: kickoff2026\n\nAnda menerima undangan ini karena terdaftar sebagai peserta rapat.\n\nSalam,\nZoom",
+        "link_text": null,
+        "link_url": null
+      },
+      "scaffold": null,
+      "generic_warning": null,
+      "correct_answer": "legitimate",
+      "cue_options": null
+    },
+    {
+      "id": "L7",
+      "phase": 2,
+      "type": "legitimate",
+      "subtype": "legitimate",
+      "difficulty": null,
+      "phish_scale_score": null,
+      "cue_tags": [],
+      "source": "Reconstructed from Google One official storage summary notification. Real domain no-reply@accounts.google.com.",
+      "display": {
+        "from_name": "Google",
+        "from_address": "no-reply@accounts.google.com",
+        "subject": "Ringkasan penyimpanan Google Anda – Juli 2026",
+        "body": "Ringkasan Penyimpanan Bulanan\n\nPenyimpanan Google Anda untuk akun karyawan@perusahaan.com:\n\nTotal digunakan: 8,2 GB dari 15 GB (55%)\n- Google Drive: 5,1 GB\n- Gmail: 2,4 GB\n- Google Foto: 0,7 GB\n\nPenyimpanan Anda masih mencukupi. Tidak diperlukan tindakan apa pun saat ini.\n\nUntuk melihat detail penggunaan penyimpanan:\nhttps://one.google.com/storage\n\nAnda menerima email ini sebagai bagian dari layanan Google One.\n\nSalam,\nTim Google",
+        "link_text": null,
+        "link_url": null
+      },
+      "scaffold": null,
+      "generic_warning": null,
+      "correct_answer": "legitimate",
+      "cue_options": null
+    },
+    {
+      "id": "L8",
+      "phase": 2,
+      "type": "legitimate",
+      "subtype": "legitimate",
+      "difficulty": null,
+      "phish_scale_score": null,
+      "cue_tags": [],
+      "source": "Reconstructed authentic internal HR policy FYI. No link, no action required — pure informational. Hardest legitimate (pairs with P8 internal HR phishing).",
+      "display": {
+        "from_name": "Human Resources",
+        "from_address": "hr@perusahaan.co.id",
+        "subject": "Informasi: Pembaruan Kebijakan Cuti Tahunan 2026",
+        "body": "Yth. Seluruh Karyawan,\n\nBersama ini kami sampaikan informasi mengenai pembaruan kebijakan cuti tahunan yang berlaku mulai 1 Agustus 2026.\n\nPoin-poin utama pembaruan:\n1. Hak cuti tahunan bertambah 1 hari untuk karyawan dengan masa kerja lebih dari 5 tahun\n2. Pengajuan cuti dapat dilakukan melalui sistem HR yang telah tersedia\n3. Batas pengajuan cuti: minimal 3 hari kerja sebelum tanggal cuti\n\nKebijakan lengkap tersedia di portal internal perusahaan. Tidak diperlukan tindakan atau konfirmasi dari karyawan untuk email ini.\n\nApabila ada pertanyaan, silakan hubungi HR langsung di hr@perusahaan.co.id.\n\nHormat kami,\nDepartemen Human Resources",
+        "link_text": null,
+        "link_url": null
+      },
+      "scaffold": null,
+      "generic_warning": null,
+      "correct_answer": "legitimate",
+      "cue_options": null
+    }
+  ]
+}
