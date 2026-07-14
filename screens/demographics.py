@@ -26,6 +26,11 @@ def render():
         ["", "18-24 tahun", "25–34 tahun", "34–44 tahun", "45-54 tahun", "55 tahun ke atas"],
     )
 
+    gender = st.selectbox(
+        "Jenis kelamin Anda:",
+        ["", "Laki-laki", "Perempuan", "Memilih Tidak Menyebut"],
+    )
+
     education = st.selectbox(
         "Pendidikan terakhir Anda:",
         ["", "SMA / Sederajat", "Diploma (D1–D3)", "Sarjana (S1)", "Pascasarjana (S2/S3)"],
@@ -75,12 +80,13 @@ def render():
     final_job = job_other.strip() if job == "Lainnya" else job
 
     # final_job evaluates to False if it's an empty string ""
-    all_filled = all([age, education, final_job, exp, email_freq, training, device])
+    all_filled = all([age, gender, education, final_job, exp, email_freq, training, device])
 
     if st.button("Lanjut →", disabled=not all_filled,
                  type="primary", use_container_width=True):
         st.session_state.demographics = {
             "age_range": age,
+            "gender": gender,
             "education": education,
             "job_function": final_job, # Save the specific job if 'Lainnya' was chosen
             "experience": exp,
