@@ -29,7 +29,7 @@ def build_row(session) -> list:
         session.get("timestamp_start", ""),
         round(time.time() - session.get("timestamp_start", time.time()), 0),
         session["demographics"].get("age_range", ""),
-        session["gender"].get("gender", ""),
+        session["demographics"].get("gender", ""),
         session["demographics"].get("education", ""),
         session["demographics"].get("job_function", ""),
         session["demographics"].get("experience", ""),
